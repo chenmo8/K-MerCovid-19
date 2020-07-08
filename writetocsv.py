@@ -27,7 +27,8 @@ for filename in os.listdir(directory):
         if k%2 !=0:
             fourtok = (4**k)/2
         else:
-            fourtok = (4**k)
+            p = int(k/2)
+            fourtok = (4**k-4**p)/2 + (4**p)
         estim = 30265-k+1
         numpytry.append([k, len(kmersforthatfile),fourtok,estim])
         totalkers.update({k:len(kmersforthatfile)})
@@ -35,4 +36,4 @@ for filename in os.listdir(directory):
         continue
 
 a = numpy.asarray(numpytry)
-numpy.savetxt("foo.csv", a, delimiter=",")
+numpy.savetxt("kmerdata.csv", a, delimiter=",")
